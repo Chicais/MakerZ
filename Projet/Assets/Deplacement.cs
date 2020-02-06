@@ -21,19 +21,19 @@ public class Deplacement : MonoBehaviour
         {
             if (Input.GetKey("z"))
             {
-                rb.transform.Translate(Vector3.forward * Time.deltaTime * mvt);
+                rb.AddForce(Vector3.forward * mvt);
             }
             if (Input.GetKey("d"))
             {
-                rb.transform.Translate(Vector3.right * Time.deltaTime * mvt);
+                rb.AddForce(Vector3.right * mvt);
             }
             if (Input.GetKey("q"))
             {
-                rb.transform.Translate(Vector3.left * Time.deltaTime * mvt);
+                rb.AddForce(Vector3.left * mvt);
             }
             if (Input.GetKey("s"))
             {
-                rb.transform.Translate(Vector3.back * Time.deltaTime * mvt);
+                rb.AddForce(Vector3.back * mvt);
             }
         }
     }

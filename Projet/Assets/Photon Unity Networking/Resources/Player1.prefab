@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8829196314961786992}
-  mvt: 100
+  mvt: 50
 --- !u!114 &114947869224590570
 MonoBehaviour:
   m_ObjectHideFlags: 0
