@@ -142,8 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloc: {fileID: 3749691865064157081, guid: 0e7d9ff18dbf92644b4ccf8ae4543979, type: 3}
-  player: {fileID: 1125918207}
-  offset: {x: 0, y: 0, z: 200}
 --- !u!4 &43351874
 Transform:
   m_ObjectHideFlags: 0
@@ -369,13 +367,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125918207}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 233, y: 220, z: -599}
+  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
+  m_LocalPosition: {x: 255, y: 150, z: -150}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!114 &1125918211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +565,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 43351873}
+      - m_Target: {fileID: 0}
         m_MethodName: clic
         m_Mode: 1
         m_Arguments:

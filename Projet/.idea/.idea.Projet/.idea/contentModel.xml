@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\33626\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -8,11 +8,13 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="cam_mvt.cs" t="Include" />
-        <e p="camera_follow.cs" t="Include" />
-        <e p="Deplacement.cs" t="Include" />
-        <e p="Follow.cs" t="Include" />
-        <e p="Menu.cs" t="Include" />
+        <e p="My project" t="Include">
+          <e p="cam_mvt.cs" t="Include" />
+          <e p="camera_follow.cs" t="Include" />
+          <e p="Deplacement.cs" t="Include" />
+          <e p="Follow.cs" t="Include" />
+          <e p="select.cs" t="Include" />
+        </e>
         <e p="Photon Unity Networking" t="Include">
           <e p="changelog.txt" t="Include" />
           <e p="Demos" t="Include">
@@ -285,7 +287,32 @@
             <e p="WebSocket.cs" t="Include" />
           </e>
         </e>
-        <e p="select.cs" t="Include" />
+        <e p="Script" t="Include">
+          <e p="Lobby" t="Include">
+            <e p="CreateRoom.cs" t="Include" />
+            <e p="CurrentRoomCanvas.cs" t="Include" />
+            <e p="DestroyOthers.cs" t="Include" />
+            <e p="LobbyCanvas.cs" t="Include" />
+            <e p="LobbyNetwork.cs" t="Include" />
+            <e p="MainCanvasManager.cs" t="Include" />
+            <e p="PlayerLayout.cs" t="Include" />
+            <e p="PlayerListing.cs" t="Include" />
+            <e p="PlayerNetwork.cs" t="Include" />
+            <e p="RoomLayout.cs" t="Include" />
+            <e p="RoomListing.cs" t="Include" />
+          </e>
+          <e p="Menu" t="Include">
+            <e p="Menu.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="Camcontroller2.cs" t="Include" />
+            <e p="CameraController.cs" t="Include" />
+            <e p="InstanciateCam.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerMvt.cs" t="Include" />
+            <e p="SettingParent.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

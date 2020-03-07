@@ -516,6 +516,10 @@ namespace Photon
             }
         }
         #endif
+        public virtual void OnSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
@@ -929,6 +933,11 @@ namespace Photon
 		public virtual void OnOwnershipTransfered(object[] viewAndPlayers)
 		{
 		}
+
+        public virtual void OnSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -57,11 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\cam_mvt.cs" />
-    <Compile Include="Assets\camera_follow.cs" />
-    <Compile Include="Assets\Deplacement.cs" />
-    <Compile Include="Assets\Follow.cs" />
-    <Compile Include="Assets\Menu.cs" />
+    <Compile Include="Assets\My project\cam_mvt.cs" />
+    <Compile Include="Assets\My project\camera_follow.cs" />
+    <Compile Include="Assets\My project\Deplacement.cs" />
+    <Compile Include="Assets\My project\Follow.cs" />
+    <Compile Include="Assets\My project\select.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -207,7 +207,24 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
-    <Compile Include="Assets\select.cs" />
+    <Compile Include="Assets\Script\Lobby\CreateRoom.cs" />
+    <Compile Include="Assets\Script\Lobby\CurrentRoomCanvas.cs" />
+    <Compile Include="Assets\Script\Lobby\DestroyOthers.cs" />
+    <Compile Include="Assets\Script\Lobby\LobbyCanvas.cs" />
+    <Compile Include="Assets\Script\Lobby\LobbyNetwork.cs" />
+    <Compile Include="Assets\Script\Lobby\MainCanvasManager.cs" />
+    <Compile Include="Assets\Script\Lobby\PlayerLayout.cs" />
+    <Compile Include="Assets\Script\Lobby\PlayerListing.cs" />
+    <Compile Include="Assets\Script\Lobby\PlayerNetwork.cs" />
+    <Compile Include="Assets\Script\Lobby\RoomLayout.cs" />
+    <Compile Include="Assets\Script\Lobby\RoomListing.cs" />
+    <Compile Include="Assets\Script\Menu\Menu.cs" />
+    <Compile Include="Assets\Script\Player\Camcontroller2.cs" />
+    <Compile Include="Assets\Script\Player\CameraController.cs" />
+    <Compile Include="Assets\Script\Player\InstanciateCam.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMvt.cs" />
+    <Compile Include="Assets\Script\Player\SettingParent.cs" />
     <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />

@@ -43,4 +43,9 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - TaggedPlayer
+  - RPC_LoadGameOthers
+  - RPC_GameIsloadedForOther
+  - RPC_GameIsLoadedForOther
+  - RPC_CreatePlater
+  - RPC_CreatePlayer
   DisableAutoOpenWizard: 1
