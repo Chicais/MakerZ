@@ -217,10 +217,14 @@
     <Compile Include="Assets\Script\Menu\Menu.cs" />
     <Compile Include="Assets\Script\Player\Camcontroller2.cs" />
     <Compile Include="Assets\Script\Player\CameraController.cs" />
+    <Compile Include="Assets\Script\Player\Checkpoint.cs" />
+    <Compile Include="Assets\Script\Player\Finish.cs" />
+    <Compile Include="Assets\Script\Player\FinishMulti.cs" />
     <Compile Include="Assets\Script\Player\InstanciateCam.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\Player\PlayerMvt.cs" />
     <Compile Include="Assets\Script\Player\SettingParent.cs" />
+    <Compile Include="Assets\Script\Player\TriggerMulti.cs" />
     <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />

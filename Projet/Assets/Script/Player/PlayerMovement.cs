@@ -13,12 +13,18 @@ public class PlayerMovement : Photon.MonoBehaviour
     private Animator Animator;
     private static readonly int IsJump = Animator.StringToHash("isJump");
     private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    
+    public bool isSpeedBoosted = false;
+    public bool isJumpBoosted = false;
+    public float currentTime = 0f;
+    public float startingTime = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Animator = transform.GetChild(0).GetComponent<Animator>();
+        currentTime = startingTime;
 
         print(Animator);
     }
@@ -34,6 +40,28 @@ public class PlayerMovement : Photon.MonoBehaviour
    
         moveDirection.y = yStore;
         
+        if (isSpeedBoosted)
+        {
+            moveSpeed = 30f;
+            currentTime -= 1 * Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                moveSpeed = 10f;
+                isSpeedBoosted = false;
+            }
+        }
+        
+        if (isJumpBoosted)
+        {
+            jumpForce = 12f;
+            currentTime -= 1 * Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                jumpForce = 8f;
+                isJumpBoosted = false;
+            }
+        }
+        
         if(controller.isGrounded)
         {
             moveDirection.y=0f;
@@ -43,6 +71,7 @@ public class PlayerMovement : Photon.MonoBehaviour
                 moveDirection.y = jumpForce;
                 
                 Animator.SetBool("isJump", true);
+                
                 print("up space " + IsJump);
             }
         }
@@ -67,10 +96,25 @@ public class PlayerMovement : Photon.MonoBehaviour
             Animator.SetBool("isJump", true);
         }*/
         
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonUp("Jump"))
         {
             Animator.SetBool("isJump", false);
             print("down space " + IsJump);
+        }
+    }
+    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            currentTime = startingTime;
+            isSpeedBoosted = true;
+        }
+        
+        if (other.gameObject.CompareTag("Jump Boost"))
+        {
+            currentTime = startingTime;
+            isJumpBoosted = true;
         }
     }
 }

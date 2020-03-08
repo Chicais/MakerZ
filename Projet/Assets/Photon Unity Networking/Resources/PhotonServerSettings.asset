@@ -48,4 +48,6 @@ MonoBehaviour:
   - RPC_GameIsLoadedForOther
   - RPC_CreatePlater
   - RPC_CreatePlayer
+  - destroyObj
+  - Win
   DisableAutoOpenWizard: 1

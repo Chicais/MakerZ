@@ -11,6 +11,10 @@ public class PlayerMvt : Photon.MonoBehaviour
     public CharacterController controller;
     private Vector3 moveDirection;
     public float gravityScale;
+    public bool isSpeedBoosted = false;
+    public bool isJumpBoosted = false;
+    public float currentTime = 0f;
+    public float startingTime = 10f;
 
     private PhotonView _view;
     public Camera cam;
@@ -79,6 +83,28 @@ public class PlayerMvt : Photon.MonoBehaviour
         moveDirection = moveDirection.normalized * moveSpeed;
 
         moveDirection.y = yStore;
+        
+        if (isSpeedBoosted)
+        {
+            moveSpeed = 30f;
+            currentTime -= 1 * Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                moveSpeed = 10f;
+                isSpeedBoosted = false;
+            }
+        }
+        
+        if (isJumpBoosted)
+        {
+            jumpForce = 12f;
+            currentTime -= 1 * Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                jumpForce = 8f;
+                isJumpBoosted = false;
+            }
+        }
 
         if (controller.isGrounded)
         {
@@ -112,5 +138,20 @@ public class PlayerMvt : Photon.MonoBehaviour
         {
             Animator.SetBool("isJump", false);
         }
+    }
+    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            currentTime = startingTime;
+            isSpeedBoosted = true;
+        }
+        
+        /*if (other.gameObject.CompareTag("Jump Boost"))
+        {
+            currentTime = startingTime;
+            isJumpBoosted = true;
+        }*/
     }
 }

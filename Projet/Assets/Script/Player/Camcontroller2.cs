@@ -78,7 +78,7 @@ public class Camcontroller2 : Photon.MonoBehaviour
             
             if (Input.GetKey(KeyCode.Escape))
                 Cursor.lockState = CursorLockMode.None;
-            if (Input.GetKey(KeyCode.Mouse0))
+            /*if (Input.GetKey(KeyCode.Mouse0))
             {
                 test++;
                 if (test == 1) 
@@ -89,7 +89,7 @@ public class Camcontroller2 : Photon.MonoBehaviour
                 }
                 
                 test = test % 2;
-            }
+            }*/
         }
     }
 }

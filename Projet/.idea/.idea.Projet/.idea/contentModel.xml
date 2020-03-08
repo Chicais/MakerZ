@@ -301,10 +301,14 @@
           <e p="Player" t="Include">
             <e p="Camcontroller2.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
+            <e p="Checkpoint.cs" t="Include" />
+            <e p="Finish.cs" t="Include" />
+            <e p="FinishMulti.cs" t="Include" />
             <e p="InstanciateCam.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
             <e p="PlayerMvt.cs" t="Include" />
             <e p="SettingParent.cs" t="Include" />
+            <e p="TriggerMulti.cs" t="Include" />
           </e>
         </e>
       </e>

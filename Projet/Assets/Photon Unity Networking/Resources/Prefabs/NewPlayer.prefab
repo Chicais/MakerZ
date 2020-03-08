@@ -3069,7 +3069,7 @@ GameObject:
   - component: {fileID: 2008031584874416973}
   m_Layer: 0
   m_Name: NewPlayer
-  m_TagString: Untagged
+  m_TagString: NewPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3125,7 +3125,6 @@ MonoBehaviour:
   controller: {fileID: 9128455457399745446}
   gravityScale: 2
   cam: {fileID: 7599671870568174469}
-  player: {fileID: 9128455457399745465}
 --- !u!114 &2008031584874416973
 MonoBehaviour:
   m_ObjectHideFlags: 0
