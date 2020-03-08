@@ -10,12 +10,17 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     private Vector3 moveDirection;
     public float gravityScale;
-
+    public bool isSpeedBoosted = false;
+    public bool isJumpBoosted = false;
+    public float currentTime = 0f;
+    public float startingTime = 10f;
+    
     // Start is called before the first frame update
     void Start()
     {
         //theRD = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+        currentTime = startingTime;
     }
 
     // Update is called once per frame
@@ -31,6 +36,28 @@ public class PlayerController : MonoBehaviour
         float yStore = moveDirection.y;
         moveDirection = (transform.forward * Input.GetAxis("Vertical")) +
                         (transform.right * Input.GetAxis("Horizontal"));
+        if (isSpeedBoosted)
+        {
+            moveSpeed = 30f;
+            currentTime -= 1 * Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                moveSpeed = 10f;
+                isSpeedBoosted = false;
+            }
+        }
+        
+        if (isJumpBoosted)
+        {
+            jumpForce = 12f;
+            currentTime -= 1 * Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                jumpForce = 8f;
+                isJumpBoosted = false;
+            }
+        }
+        
         moveDirection = moveDirection.normalized * moveSpeed ;
    
         moveDirection.y = yStore;
@@ -48,6 +75,23 @@ public class PlayerController : MonoBehaviour
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale*Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
 
+        
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            currentTime = startingTime;
+            isSpeedBoosted = true;
+        }
+        
+        if (other.gameObject.CompareTag("Jump Boost"))
+        {
+            currentTime = startingTime;
+            isJumpBoosted = true;
+        }
+        
         
     }
 }
