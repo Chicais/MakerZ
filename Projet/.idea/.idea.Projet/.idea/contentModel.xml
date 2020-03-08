@@ -8,13 +8,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="My project" t="Include">
-          <e p="cam_mvt.cs" t="Include" />
-          <e p="camera_follow.cs" t="Include" />
-          <e p="Deplacement.cs" t="Include" />
-          <e p="Follow.cs" t="Include" />
-          <e p="select.cs" t="Include" />
-        </e>
         <e p="Photon Unity Networking" t="Include">
           <e p="changelog.txt" t="Include" />
           <e p="Demos" t="Include">
@@ -292,6 +285,7 @@
             <e p="CreateRoom.cs" t="Include" />
             <e p="CurrentRoomCanvas.cs" t="Include" />
             <e p="DestroyOthers.cs" t="Include" />
+            <e p="LeaveCurrentMatch.cs" t="Include" />
             <e p="LobbyCanvas.cs" t="Include" />
             <e p="LobbyNetwork.cs" t="Include" />
             <e p="MainCanvasManager.cs" t="Include" />

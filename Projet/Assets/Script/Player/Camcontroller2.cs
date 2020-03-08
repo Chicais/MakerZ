@@ -13,6 +13,7 @@ public class Camcontroller2 : Photon.MonoBehaviour
     public float maxViewAngle;
     public float minViewAngle;
     public bool invertY;
+    private int test = 0;
     
     //private PhotonView _view;
     
@@ -74,6 +75,21 @@ public class Camcontroller2 : Photon.MonoBehaviour
             }
         
             transform.LookAt(player2);
+            
+            if (Input.GetKey(KeyCode.Escape))
+                Cursor.lockState = CursorLockMode.None;
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                test++;
+                if (test == 1) 
+                    Cursor.lockState = CursorLockMode.Locked;
+                else
+                {
+                    return;
+                }
+                
+                test = test % 2;
+            }
         }
     }
 }

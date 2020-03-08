@@ -57,11 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\My project\cam_mvt.cs" />
-    <Compile Include="Assets\My project\camera_follow.cs" />
-    <Compile Include="Assets\My project\Deplacement.cs" />
-    <Compile Include="Assets\My project\Follow.cs" />
-    <Compile Include="Assets\My project\select.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -210,6 +205,7 @@
     <Compile Include="Assets\Script\Lobby\CreateRoom.cs" />
     <Compile Include="Assets\Script\Lobby\CurrentRoomCanvas.cs" />
     <Compile Include="Assets\Script\Lobby\DestroyOthers.cs" />
+    <Compile Include="Assets\Script\Lobby\LeaveCurrentMatch.cs" />
     <Compile Include="Assets\Script\Lobby\LobbyCanvas.cs" />
     <Compile Include="Assets\Script\Lobby\LobbyNetwork.cs" />
     <Compile Include="Assets\Script\Lobby\MainCanvasManager.cs" />

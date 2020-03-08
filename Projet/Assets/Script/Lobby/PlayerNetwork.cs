@@ -19,6 +19,10 @@ public class PlayerNetwork : MonoBehaviour
         
         playername = "#" + Random.Range(1000, 9999);
 
+        PhotonNetwork.sendRate = 40;
+
+        PhotonNetwork.sendRateOnSerialize = 20;
+
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
         
     }

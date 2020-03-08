@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Animations;
 
 public class PlayerMvt : Photon.MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class PlayerMvt : Photon.MonoBehaviour
 
     private PhotonView _view;
     public Camera cam;
-    public GameObject pivot;
+
+    private Animator Animator;
+
+    private Quaternion TargetRotation;
+    private Vector3 TargetPosition;
 
     void Start()
     {
@@ -24,11 +29,11 @@ public class PlayerMvt : Photon.MonoBehaviour
         if (_view.isMine)
         {
             controller = GetComponent<CharacterController>();
+            Animator = transform.GetChild(0).GetComponent<Animator>();
         }
         else
         {
             cam.enabled = false;
-            //Destroy(pivot);
         }
     }
 
@@ -36,7 +41,34 @@ public class PlayerMvt : Photon.MonoBehaviour
     void Update()
     {
         if (_view.isMine)
+        {
             Mvt();
+            Anim();
+        }
+        else
+        {
+            SmoothMove();
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+        }
+        else
+        {
+            TargetPosition = (Vector3) stream.ReceiveNext();
+            TargetRotation = (Quaternion) stream.ReceiveNext();
+        }
+    }
+
+    private void SmoothMove()
+    {
+        transform.position = Vector3.Lerp(transform.position, TargetPosition, 0.25f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500 * Time.deltaTime);
     }
 
     private void Mvt()
@@ -59,5 +91,26 @@ public class PlayerMvt : Photon.MonoBehaviour
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    private void Anim()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Animator.SetBool("isWalking", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            Animator.SetBool("isWalking", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Animator.SetBool("isJump", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Animator.SetBool("isJump", false);
+        }
     }
 }

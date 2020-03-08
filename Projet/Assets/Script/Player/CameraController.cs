@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
     public float minViewAngle;
 
     public bool invertY;
+    
+    private int test = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,5 +78,20 @@ public class CameraController : MonoBehaviour
         }
         
         transform.LookAt(target);
+        
+        if (Input.GetKey(KeyCode.Escape))
+            Cursor.lockState = CursorLockMode.None;
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            test++;
+            if (test == 2) 
+                Cursor.lockState = CursorLockMode.Locked;
+            else
+            {
+                return;
+            }
+                
+            test = test % 2;
+        }
     }
 }

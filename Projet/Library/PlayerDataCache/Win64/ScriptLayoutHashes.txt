@@ -27,7 +27,6 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 7f604117af8c3e253d4cb98eb9e90cc3 Assembly-CSharp.dll:.PlayerMovement
-c52ff6e96ff37596facc2cd2267da452 Assembly-CSharp.dll:.Deplacement
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.InstanciateCam
 317b3901f36d36fadb628908ec9c8627 Assembly-CSharp.dll:.ThirdPersonController
 3ba023cd67d72cace33969ab863e0fd4 Assembly-CSharp.dll:.PhotonStatsGui
@@ -192,7 +191,6 @@ bae14f4ccd4272b02cb3643d22a53ac8 Assembly-CSharp.dll:.PickupDemoGui
 17c6b61ef664ddb751d783bf4c747c64 Assembly-CSharp.dll:.OnClickDestroy
 1e3cccb005a36e8a4807cdda0ec0a42e Assembly-CSharp.dll:.AudioRpc
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
-1e43debe02dbe0094e66e528557fab68 Assembly-CSharp.dll:.select
 d4dacc6750ca362eb286d08d4a339689 Assembly-CSharp.dll:.PickupItem
 47469d9970e1c3a18b188b2c953c3fa0 Assembly-CSharp.dll:.MainCanvasManager
 e25a670c397c2a68e67c4f2ad5006e00 Assembly-CSharp.dll:.CameraController
@@ -238,14 +236,12 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
 e1e615eaf73e560828f53edc8952e615 Assembly-CSharp.dll:.PunTurnManager
-e3f92f3a8acf54a538367acbbe0c5e2b Assembly-CSharp.dll:.Follow
 931f489e44eadf809e9310429c99dde5 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioListenerExtension
 fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
 f3da7dc96bb8aee9efa3f969de21c05e Assembly-CSharp.dll:.CubeInter
 0b24359b178f2110b72f9b386ac3b17c Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.CameraWork
-115fa0fdfe4f0f4502e5921065708699 Assembly-CSharp.dll:.cam_mvt
 9830869511eeb4e35433654ae917b598 Assembly-CSharp.dll:.IdleRunJump
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Demo2DJumpAndRun
 933783f419e75b4694cd7f9cd79e26e0 Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.PlayerManager
@@ -256,7 +252,6 @@ d7f7bc402888d42a0dbb080693e6863c Assembly-CSharp.dll:ExitGames.Demos.DemoAnimato
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LobbyNetwork
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OnClickRequestOwnership
 507174d46dacbc5fe45e28485db5dd1e Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
-e90e30ecceac42b11202aac60a6e5756 Assembly-CSharp.dll:.camera_follow
 5421466ed6291c1ab2d1650a128005b2 Assembly-CSharp.dll:.PhotonLagSimulationGui
 c9f6a97ea0add8e28f0e02bcd53957e2 Assembly-CSharp.dll:.PickupCamera
 26f2b369d93114998956c7f30d867eca Assembly-CSharp.dll:.GUICustomAuth
@@ -278,7 +273,7 @@ a7fdc7565fb5d0a515ff7026dc6e7a36 Assembly-CSharp.dll:.DemoMecanimGUI
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.PlayerNameInputField
 6646534bc3c2aa05df8d82876d0eccd4 Assembly-CSharp.dll:.ToHubButton
 55527c4ad510392679c5e9356f5ac24b Assembly-CSharp.dll:.GUIFriendFinding
-c3eed31d74a561bc3c468baa64ea318a Assembly-CSharp.dll:.PlayerMvt
+5482da745790574f3e14a8422bcacdd7 Assembly-CSharp.dll:.PlayerMvt
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OnClickRightDestroy
 d1f07c9e64b7817e6271f80bb03de25f Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.GameManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OnDoubleclickDestroy
@@ -290,3 +285,4 @@ e1b8eaae6a90f88343f8be6d517488f6 Assembly-CSharp.dll:.PhotonView
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ClickDetector
 e7e6571fb792bd5234807be154062d6f Assembly-CSharp.dll:.CubeExtra
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LeaveCurrentMatch
