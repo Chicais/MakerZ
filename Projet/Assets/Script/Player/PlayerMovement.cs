@@ -101,6 +101,11 @@ public class PlayerMovement : Photon.MonoBehaviour
             Animator.SetBool("isJump", false);
             print("down space " + IsJump);
         }
+        
+        float y2 = transform.position.y;
+
+        if (y2 < -20)
+            transform.position = new Vector3(0,2,0);
     }
     
     public void OnTriggerEnter(Collider other)

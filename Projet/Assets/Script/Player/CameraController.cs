@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour
         pivot.transform.parent = target.transform;
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -78,9 +79,13 @@ public class CameraController : MonoBehaviour
         }
         
         transform.LookAt(target);
-        
+
         if (Input.GetKey(KeyCode.Escape))
+        {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         /*if (Input.GetKey(KeyCode.Mouse0))
         {
             test++;

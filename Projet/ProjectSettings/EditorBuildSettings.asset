@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 06b2aa6c211c7104cad9608db4c01fb0
+  - enabled: 0
+    path: Assets/Scenes/DDOLInit.unity
+    guid: 34d2e730a3b96104b82409e7079a8da0
   - enabled: 1
     path: Assets/Scenes/Lobby UI.unity
     guid: a15186f1950663c43b3bf27564c553be

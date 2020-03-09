@@ -26,6 +26,7 @@ public class Finish : MonoBehaviour
         if (other.gameObject.CompareTag("NewPlayer"))
         {
             winText.SetActive(true);
+            
         }
         else
         {

@@ -29,6 +29,7 @@ public class Camcontroller2 : Photon.MonoBehaviour
         pivot2.transform.parent = player2.transform;
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -75,9 +76,12 @@ public class Camcontroller2 : Photon.MonoBehaviour
             }
         
             transform.LookAt(player2);
-            
+
             if (Input.GetKey(KeyCode.Escape))
+            {
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
             /*if (Input.GetKey(KeyCode.Mouse0))
             {
                 test++;

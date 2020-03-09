@@ -15,6 +15,7 @@ public class PlayerNetwork : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
         photonView = GetComponent<PhotonView>();
         
         playername = "#" + Random.Range(1000, 9999);

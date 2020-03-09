@@ -202,6 +202,7 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+    <Compile Include="Assets\Script\DDOLmanager.cs" />
     <Compile Include="Assets\Script\Lobby\CreateRoom.cs" />
     <Compile Include="Assets\Script\Lobby\CurrentRoomCanvas.cs" />
     <Compile Include="Assets\Script\Lobby\DestroyOthers.cs" />

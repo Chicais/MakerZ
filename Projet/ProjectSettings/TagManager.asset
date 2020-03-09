@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Checkpoint
   - NewPlayer
+  - DDOL
+  - Jump Boost
   layers:
   - Default
   - TransparentFX

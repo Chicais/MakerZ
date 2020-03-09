@@ -117,6 +117,11 @@ public class PlayerMvt : Photon.MonoBehaviour
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
+
+        float y2 = transform.position.y;
+
+        if (y2 < -20)
+            transform.position = new Vector3(0,2,0);
     }
 
     private void Anim()
@@ -148,10 +153,11 @@ public class PlayerMvt : Photon.MonoBehaviour
             isSpeedBoosted = true;
         }
         
-        /*if (other.gameObject.CompareTag("Jump Boost"))
+        if (other.gameObject.CompareTag("Jump Boost"))
         {
             currentTime = startingTime;
             isJumpBoosted = true;
-        }*/
+        }
+
     }
 }
