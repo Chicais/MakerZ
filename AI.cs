@@ -14,12 +14,13 @@ public class AI : MonoBehaviour
     public bool isInvicible = false;
     public bool isSlowed = false;
     public bool isStunned = false;
+    public bool isCountdown = true;
     public float currentTimeSpeed = 0f;
     public float currentTimeJump = 0f;
     public float currentTimeSlow = 0f;
     public float currentTimeStunned = 0f;
     public float currentTimeInvincible = 0f;
-    public float startingTime = 10f;
+    public float startingTime = 3f;
     public Transform target;
     private int waypointIndex = 0;
 
@@ -33,6 +34,15 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isCountdown)
+        {
+            moveSpeed = 0f;
+            startingTime -= 1 * Time.deltaTime;
+            if (startingTime<=0)
+            {
+                moveSpeed = 10f;
+            }
+        }
         Vector3 direction = target.position - this.transform.position;
         
         //float yStore = direction.y;
@@ -149,13 +159,13 @@ public class AI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-            currentTimeSpeed = startingTime;
+            currentTimeSpeed = 10f;
             isSpeedBoosted = true;
         }
         
         if (other.gameObject.CompareTag("Jump Boost"))
         {
-            currentTimeJump = startingTime;
+            currentTimeJump = 10f;
             isJumpBoosted = true;
         }
         if (other.gameObject.CompareTag("Slow"))
@@ -165,7 +175,7 @@ public class AI : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Invincible"))
         {
-            currentTimeInvincible = startingTime;
+            currentTimeInvincible = 10f;
             isInvicible = true;
         }
         if (other.gameObject.CompareTag("Stun"))
