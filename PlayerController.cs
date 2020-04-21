@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,15 +13,28 @@ public class PlayerController : MonoBehaviour
     public float gravityScale;
     public bool isSpeedBoosted = false;
     public bool isJumpBoosted = false;
-    public float currentTime = 0f;
+    public bool isInvicible = false;
+    public bool isSlowed = false;
+    public bool isStunned = false;
+    public float currentTimeSpeed = 0f;
+    public float currentTimeJump = 0f;
+    public float currentTimeSlow = 0f;
+    public float currentTimeStunned = 0f;
+    public float currentTimeInvincible = 0f;
     public float startingTime = 10f;
+    public Text speedText;
+    public Text jumpText;
+    public Text slowText;
+    public Text stunText;
+    public Text invincibleText;
+    
     
     // Start is called before the first frame update
     void Start()
     {
         //theRD = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        currentTime = startingTime;
+        //currentTime = startingTime;
     }
 
     // Update is called once per frame
@@ -38,20 +52,68 @@ public class PlayerController : MonoBehaviour
                         (transform.right * Input.GetAxis("Horizontal"));
         if (isSpeedBoosted)
         {
-            moveSpeed = 30f;
-            currentTime -= 1 * Time.deltaTime;
-            if (currentTime <= 0)
+            moveSpeed = 15f;
+            currentTimeSpeed -= 1 * Time.deltaTime;
+            speedText.text = "Speed : " + currentTimeSpeed.ToString("0");
+            if (currentTimeSpeed <= 0)
             {
                 moveSpeed = 10f;
                 isSpeedBoosted = false;
+            }
+        }
+
+        if (isSlowed)
+        {
+            moveSpeed = 7f;
+            currentTimeSlow -= 1 * Time.deltaTime;
+            slowText.text = "Slowed : " + currentTimeSlow.ToString("0");
+            if (currentTimeSlow <= 0)
+            {
+                moveSpeed = 10f;
+                isSlowed = false;
+            }
+        }
+        
+        if (isInvicible)
+        {
+            if (isSpeedBoosted)
+            {
+                moveSpeed = 15f;
+            }
+            else
+            {
+                moveSpeed = 10f;
+            }
+            isSlowed = false;
+            isStunned = false;
+            currentTimeSlow = 0f;
+            currentTimeStunned = 0f;
+            currentTimeInvincible -= 1 * Time.deltaTime;
+            invincibleText.text = "Invincible : " + currentTimeInvincible.ToString("0");
+            if (currentTimeInvincible <= 0)
+            {
+                isInvicible = false;
+            }
+        }
+        
+        if (isStunned)
+        {
+            moveSpeed = 0f;
+            currentTimeStunned -= 1 * Time.deltaTime;
+            stunText.text = "Stunned : " + currentTimeStunned.ToString("0");
+            if (currentTimeStunned <= 0)
+            {
+                moveSpeed = 10;
+                isStunned = false;
             }
         }
         
         if (isJumpBoosted)
         {
             jumpForce = 12f;
-            currentTime -= 1 * Time.deltaTime;
-            if (currentTime <= 0)
+            currentTimeJump -= 1 * Time.deltaTime;
+            jumpText.text = "Jump Boosted : " + currentTimeJump.ToString("0");
+            if (currentTimeJump <= 0)
             {
                 jumpForce = 8f;
                 isJumpBoosted = false;
@@ -74,6 +136,11 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale*Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
+        slowText.enabled = isSlowed;
+        speedText.enabled = isSpeedBoosted;
+        jumpText.enabled = isJumpBoosted;
+        stunText.enabled = isStunned;
+        invincibleText.enabled = isInvicible;
 
         
     }
@@ -82,16 +149,31 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-            currentTime = startingTime;
+            currentTimeSpeed = startingTime;
             isSpeedBoosted = true;
         }
         
         if (other.gameObject.CompareTag("Jump Boost"))
         {
-            currentTime = startingTime;
+            currentTimeJump = startingTime;
             isJumpBoosted = true;
         }
         
-        
+        if (other.gameObject.CompareTag("Slow"))
+        {
+            currentTimeSlow = 5f;
+            isSlowed = true;
+        }
+        if (other.gameObject.CompareTag("Invincible"))
+        {
+            currentTimeInvincible = startingTime;
+            isInvicible = true;
+        }
+
+        if (other.gameObject.CompareTag("Stun"))
+        {
+            currentTimeStunned = 5f;
+            isStunned = true;
+        }
     }
 }
