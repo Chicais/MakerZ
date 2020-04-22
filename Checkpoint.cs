@@ -25,10 +25,14 @@ public class Checkpoint : MonoBehaviour
     }*/
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name=="Player")
+        if (other.gameObject.name=="Player" || other.gameObject.name=="AI")
         {
             //CheckpointOn();
-            Destroy(gameObject);
+            if (!gameObject.CompareTag("Slow"))
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
 }
