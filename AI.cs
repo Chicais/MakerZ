@@ -41,6 +41,7 @@ public class AI : MonoBehaviour
             if (startingTime<=0)
             {
                 moveSpeed = 10f;
+                isCountdown = false;
             }
         }
         Vector3 direction = target.position - this.transform.position;
@@ -182,6 +183,11 @@ public class AI : MonoBehaviour
         {
             currentTimeStunned = 5f;
             isStunned = true;
+        }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            moveSpeed = 0f;
         }
         
     }
