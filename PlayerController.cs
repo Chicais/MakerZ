@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public Text stunText;
     public Text invincibleText;
     public Text countdown;
+    public Text timer;
+    public float time;
     
     
     // Start is called before the first frame update
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
          }
          */
         //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y,Input.GetAxis("Vertical")*moveSpeed);
+        time +=1*Time.deltaTime;
+        timer.text = time.ToString("0");
         if (isCountdown)
         {
             moveSpeed = 0f;
@@ -68,6 +72,12 @@ public class PlayerController : MonoBehaviour
                 moveSpeed = 10f;
             }
         }
+        /*else
+        {
+            time +=1*Time.deltaTime;
+            timer.text = time.ToString("0");
+        }*/
+        
 
         float yStore = moveDirection.y;
         moveDirection = (transform.forward * Input.GetAxis("Vertical")) +
@@ -121,11 +131,28 @@ public class PlayerController : MonoBehaviour
         if (isStunned)
         {
             moveSpeed = 0f;
+            jumpForce = 0f;
             currentTimeStunned -= 1 * Time.deltaTime;
             stunText.text = "Stunned : " + currentTimeStunned.ToString("0");
             if (currentTimeStunned <= 0)
             {
-                moveSpeed = 10;
+                if (isSpeedBoosted)
+                {
+                    moveSpeed = 15f;
+                }
+                else
+                {
+                    moveSpeed = 10f;
+                }
+
+                if (isJumpBoosted)
+                {
+                    jumpForce = 12f;
+                }
+                else
+                {
+                    jumpForce = 8f;
+                }
                 isStunned = false;
             }
         }
@@ -148,7 +175,7 @@ public class PlayerController : MonoBehaviour
         
         if(controller.isGrounded)
         {
-             moveDirection.y=0f;
+            moveDirection.y=0f;
             if(Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpForce;
