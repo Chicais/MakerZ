@@ -12,11 +12,17 @@ public class Stun : MonoBehaviour
     private bool hasPlayer = false;
     private bool isCarried = false;
     private bool touched = false;
+    public GameObject p;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        p = ClosestPlayer();
+        if (p!=null)
+        {
+            player = p.transform;
+            playerCam = p.transform;
+        }
     }
 
     // Update is called once per frame
@@ -24,7 +30,7 @@ public class Stun : MonoBehaviour
     {
         float distance = Vector3.Distance(gameObject.transform.position, player.position);
 
-        if (distance<=1.9f)
+        if (distance<=2.5f)
         {
             hasPlayer = true;
         }
@@ -78,5 +84,23 @@ public class Stun : MonoBehaviour
         {
             touched = true;
         }
+    }
+
+    GameObject ClosestPlayer()
+    {
+        GameObject[] allPlayer = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closest = allPlayer[0];
+        float closestDistance = Vector3.Distance(gameObject.transform.position, closest.transform.position);
+        foreach (GameObject pl in allPlayer)
+        {
+            float distance = Vector3.Distance(gameObject.transform.position, pl.transform.position);
+            if (distance<closestDistance)
+            {
+                closestDistance = distance;
+                closest = pl;
+            }
+        }
+        
+        return closest;
     }
 }

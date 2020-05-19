@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isSlowed = false;
     public bool isStunned = false;
     public bool isCountdown = true;
+    public bool stopTimer = true;
     public float currentTimeSpeed = 0f;
     public float currentTimeJump = 0f;
     public float currentTimeSlow = 0f;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Text countdown;
     public Text timer;
     public float time;
+    public float minuteTimer;
     
     
     // Start is called before the first frame update
@@ -40,7 +42,6 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         
 
-        //currentTime = startingTime;
     }
 
     // Update is called once per frame
@@ -53,8 +54,23 @@ public class PlayerController : MonoBehaviour
          }
          */
         //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y,Input.GetAxis("Vertical")*moveSpeed);
-        time +=1*Time.deltaTime;
-        timer.text = time.ToString("0");
+
+        if (!stopTimer)
+        {
+            time +=1*Time.deltaTime;
+            timer.text = minuteTimer.ToString("0")+":"+time.ToString("0");
+            if (time>=59.5f)
+            {
+                minuteTimer += 1;
+                time = 0;
+            }
+
+            if (time>0 && time<9.5f)
+            {
+                timer.text = minuteTimer.ToString("0")+":0"+time.ToString("0");
+            }
+        }
+
         if (isCountdown)
         {
             moveSpeed = 0f;
@@ -70,14 +86,9 @@ public class PlayerController : MonoBehaviour
             {
                 countdown.text = "GO!";
                 moveSpeed = 10f;
+                stopTimer = false;
             }
         }
-        /*else
-        {
-            time +=1*Time.deltaTime;
-            timer.text = time.ToString("0");
-        }*/
-        
 
         float yStore = moveDirection.y;
         moveDirection = (transform.forward * Input.GetAxis("Vertical")) +
@@ -223,6 +234,11 @@ public class PlayerController : MonoBehaviour
         {
             currentTimeStunned = 5f;
             isStunned = true;
+        }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            stopTimer = true;
         }
     }
 

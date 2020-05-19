@@ -24,8 +24,11 @@ public class  BetterAI : MonoBehaviour
     public float startingTime = 3f;
     private Vector3 moveDirection = Vector3.zero;
     private int waypointIndex = 0;
-
     public CharacterController controller;
+    public bool jump;
+    public Vector3 respawnPoint;
+
+    public bool jumpOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +51,7 @@ public class  BetterAI : MonoBehaviour
             }
         }
         
-        if (Vector3.Distance(transform.position,target.position)<=1f)
-        {
-            GetNextWaypoint();
-        }
+        
         
         if (isSpeedBoosted)
         {
@@ -66,7 +66,7 @@ public class  BetterAI : MonoBehaviour
         
         if (isJumpBoosted)
         {
-            jumpForce = 12f;
+            jumpForce = 150f;
             currentTimeJump -= 1 * Time.deltaTime;
             if (currentTimeJump <= 0)
             {
@@ -134,12 +134,6 @@ public class  BetterAI : MonoBehaviour
                 isSlowed = false;
             }
         }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            moveDirection.y = jumpForce;
-        }
-        
         
         
         LookAt();
@@ -156,10 +150,41 @@ public class  BetterAI : MonoBehaviour
     {
         moveDirection = transform.forward;
         moveDirection *= moveSpeed;
-        if (Input.GetKey(KeyCode.K)&& controller.isGrounded)
+        moveDirection.y = 0;
+        if (target.gameObject.CompareTag("Slow") && Vector3.Distance(transform.position,target.position)<=5f && controller.isGrounded)
         {
             Jump();
         }
+        
+        if (Vector3.Distance(transform.position,target.position)<=2f)
+        {
+            GetNextWaypoint();
+        }
+
+        if (controller.isGrounded)
+        {
+            jumpOnce = true;
+            if (jump)
+            {
+                Jump();
+                jump = false;
+            }
+        }
+        else
+        {
+            if (!Physics.Raycast(transform.position,-transform.up,20f)&&jumpOnce)
+            {
+                Jump();
+                jumpOnce = false;
+            }
+        }
+        
+        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+           Jump();
+        }
+        
         
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravity*Time.deltaTime);
         //moveDirection.y -= gravity * Time.deltaTime;
@@ -171,6 +196,7 @@ public class  BetterAI : MonoBehaviour
         if (waypointIndex>=Waypoints.points.Length-1)
         {
             moveSpeed = 0f;
+            jumpForce = 0f;
         }
         else
         {
@@ -213,5 +239,13 @@ public class  BetterAI : MonoBehaviour
             isStunned = true;
         }
         
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (Math.Abs(hit.normal.y)<0.5)
+        {
+            jump = true;
+        }
     }
 }
