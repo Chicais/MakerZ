@@ -144,6 +144,8 @@ public class  BetterAI : MonoBehaviour
     {
         var rotation = Quaternion.LookRotation(target.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation,rotation,10*Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+
     }
 
     void Chase()
@@ -151,14 +153,58 @@ public class  BetterAI : MonoBehaviour
         moveDirection = transform.forward;
         moveDirection *= moveSpeed;
         moveDirection.y = 0;
-        if (target.gameObject.CompareTag("Slow") && Vector3.Distance(transform.position,target.position)<=5f && controller.isGrounded)
+        
+        if (target.gameObject.CompareTag("Slow") || target.gameObject.CompareTag("Stun"))
         {
-            Jump();
+            if (Vector3.Distance(transform.position,target.position)<=5f && controller.isGrounded)
+            {
+                Jump();
+            }
+                
+            if (Math.Abs(target.transform.position.x - transform.position.x) < 3f &&
+                Math.Abs(target.transform.position.z - transform.position.z) < 3f)
+            {
+                GetNextWaypoint();
+            }
         }
+
+        if (target.gameObject.CompareTag("Block"))
+        {
+            if (Math.Abs(target.transform.position.x - transform.position.x) < 2f &&
+                Math.Abs(target.transform.position.z - transform.position.z) < 2f)
+            {
+                GetNextWaypoint();
+            }
+        }
+        
+        if (Math.Abs(target.transform.position.x - transform.position.x) < 1f &&
+            Math.Abs(target.transform.position.z - transform.position.z) < 1f)
+        {
+            if (Vector3.Distance(transform.position,target.position)>2f)
+            {
+                moveSpeed = 1f;
+            }
+        }
+        
         
         if (Vector3.Distance(transform.position,target.position)<=2f)
         {
-            GetNextWaypoint();
+            if (target.gameObject.CompareTag("Finish"))
+            {
+                moveSpeed = 0f;
+            }
+            else
+            {
+                if (isSpeedBoosted)
+                {
+                    moveSpeed = 12f;
+                }
+                else
+                {
+                    moveSpeed = 8f;
+                }
+                GetNextWaypoint();
+            }
         }
 
         if (controller.isGrounded)
