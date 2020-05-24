@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     public Text timer;
     public float time;
     public float minuteTimer;
+    private bool cheatActivated = false;
+    private string[] cheatCode;
+    private int cheatIndex = 0;
     
     
     // Start is called before the first frame update
@@ -40,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         //theRD = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-        
+        cheatCode = new string[]{"m","z"};
 
     }
 
@@ -192,7 +195,45 @@ public class PlayerController : MonoBehaviour
                 moveDirection.y = jumpForce;
             }
         }
+
+        if (Input.anyKeyDown && !cheatActivated)
+        {
+            if (Input.GetKeyDown(cheatCode[cheatIndex]))
+            {
+                cheatIndex++;
+            }
+            else
+            {
+                cheatIndex = 0;
+            }
+            
+        }
         
+        if (cheatIndex==cheatCode.Length)
+        {
+            cheatActivated = true;
+        }
+
+        if (cheatActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                isSpeedBoosted = true;
+                currentTimeSpeed = 10f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                isJumpBoosted = true;
+                currentTimeJump = 10f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                isInvicible = true;
+                currentTimeInvincible = 10f;
+            }
+        }
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale*Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
@@ -202,6 +243,7 @@ public class PlayerController : MonoBehaviour
         stunText.enabled = isStunned;
         invincibleText.enabled = isInvicible;
 
+        
         
     }
 
