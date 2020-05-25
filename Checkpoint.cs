@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public Renderer theRend;
-    public Material cpOff;
-    public Material cpOn;
+    public bool destroy = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,23 +15,24 @@ public class Checkpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (destroy)
+        {
+            gameObject.SetActive(false);
+            Finish.Respawn(gameObject);
+            destroy = false;
+        }
     }
 
-    /*public void CheckpointOn()
-    {
-        theRend.material = cpOn;
-    }*/
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name=="Player" || other.gameObject.name=="AI")
         {
-            //CheckpointOn();
             if (!gameObject.CompareTag("Slow"))
             {
-                Destroy(gameObject);
+                destroy = true;
             }
             
         }
     }
+    
 }
